@@ -1,5 +1,10 @@
 import express from 'express';
-import { addressesController, companiesController, usersController } from '../controllers';
+
+import { 
+  addressesController,
+  companiesController,
+  usersController 
+} from '../controllers';
 
 const indexRouter = express.Router();
 
@@ -9,28 +14,28 @@ const example = (req, res) => {
 }
 
 // GET
-indexRouter.get('/users', example);
-indexRouter.get('/users/:id', example)
+indexRouter.get('/users', usersController.index);
+indexRouter.get('/users/:id', usersController.show);
 
-indexRouter.get('/companies', example);
-indexRouter.get('/companies/:id', example);
+indexRouter.get('/companies', companiesController.index);
+indexRouter.get('/companies/:id', companiesController.show);
 
-indexRouter.get('/addresses', example);
-indexRouter.get('/addresses/:id', example);
+indexRouter.get('/addresses', addressesController.index);
+indexRouter.get('/addresses/:id', addressesController.show);
 
 // POST
-indexRouter.post('/users', example);
-indexRouter.post('/companies', example);
-indexRouter.post('/addresses', example);
+indexRouter.post('/users', usersController.create);
+indexRouter.post('/companies', companiesController.create);
+indexRouter.post('/addresses', addressesController.create);
 
 // PUT
-indexRouter.put('/users/:id', example)
-indexRouter.put('/addresses/:id', example);
-indexRouter.put('/companies/:id', example);
+indexRouter.put('/users/:id', usersController.update);
+indexRouter.put('/addresses/:id', companiesController.update);
+indexRouter.put('/companies/:id', addressesController.update);
 
 // DELETE
-indexRouter.delete('/users/:id', example)
-indexRouter.delete('/addresses/:id', example);
-indexRouter.delete('/companies/:id', example);
+indexRouter.delete('/users/:id', usersController.destroy)
+indexRouter.delete('/addresses/:id', companiesController.destroy);
+indexRouter.delete('/companies/:id', addressesController.destroy);
 
 export default indexRouter;
