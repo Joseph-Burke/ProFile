@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "prestart": "babel ./src/ --out-dir build",
-    "start": "node ./build/bin/www"
+    "start": "node ./build/bin/www",
+    "startdev": "nodemon --exec babel-node ./api/src/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
