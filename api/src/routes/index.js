@@ -1,41 +1,36 @@
 import express from 'express';
 
-import { 
+import {
   addressesController,
   companiesController,
-  usersController 
+  usersController,
 } from '../controllers';
 
 const indexRouter = express.Router();
 
-const example = (req, res) => {
-  const message = `${req.method} ${req.url}`
-  res.status(200).send(message);
-}
+const usersRouter = express.Router();
+usersRouter.get('/', usersController.index);
+usersRouter.get('/:id', usersController.show);
+usersRouter.post('/', usersController.create);
+usersRouter.put('/:id', usersController.update);
+usersRouter.delete('/:id', usersController.destroy);
 
-// GET
-indexRouter.get('/users', usersController.index);
-indexRouter.get('/users/:id', usersController.show);
+const addressesRouter = express.Router();
+addressesRouter.get('/', addressesController.index);
+addressesRouter.get('/:id', addressesController.show);
+addressesRouter.post('/', addressesController.create);
+addressesRouter.put('/:id', addressesController.update);
+addressesRouter.delete('/:id', addressesController.destroy);
 
-indexRouter.get('/companies', companiesController.index);
-indexRouter.get('/companies/:id', companiesController.show);
+const companiesRouter = express.Router();
+companiesRouter.get('/', companiesController.index);
+companiesRouter.get('/:id', companiesController.show);
+companiesRouter.post('/', companiesController.create);
+companiesRouter.put('/:id', companiesController.update);
+companiesRouter.delete('/:id', companiesController.destroy);
 
-indexRouter.get('/addresses', addressesController.index);
-indexRouter.get('/addresses/:id', addressesController.show);
-
-// POST
-indexRouter.post('/users', usersController.create);
-indexRouter.post('/companies', companiesController.create);
-indexRouter.post('/addresses', addressesController.create);
-
-// PUT
-indexRouter.put('/users/:id', usersController.update);
-indexRouter.put('/addresses/:id', companiesController.update);
-indexRouter.put('/companies/:id', addressesController.update);
-
-// DELETE
-indexRouter.delete('/users/:id', usersController.destroy)
-indexRouter.delete('/addresses/:id', companiesController.destroy);
-indexRouter.delete('/companies/:id', addressesController.destroy);
+indexRouter.use('/users', usersRouter);
+indexRouter.use('/addresses', addressesRouter);
+indexRouter.use('/companies', companiesRouter);
 
 export default indexRouter;
