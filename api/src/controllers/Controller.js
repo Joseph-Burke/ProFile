@@ -1,10 +1,35 @@
 export class Controller {
-  constructor (name) {
-    this.name = name
-    this.index = (req, res) => res.send(`index of ${this.name}`)
-    this.show = (req, res) => res.send(`${this.name} with id ${req.params.id}`)
-    this.create = (req, res) => res.send(`create a new ${this.name}`)
-    this.update = (req, res) => res.send(`update ${this.name} with id ${req.params.id}`)
-    this.destroy = (req, res) => res.send(`delete ${this.name} with id ${req.params.id}`)
+  constructor(model) {
+    this.model = model;
+    this.index = async (req, res) => {
+      res.send(await this.model.findAll());
+    };
+    this.show = async (req, res) => {
+      const { id } = req.params;
+      res.send(await this.model.findByPk(id));
+    };
+    this.create = async (req, res) => {
+      const params = req.query;
+      const newInstance = await this.model.create(params);
+      res.send(newInstance);
+    };
+    this.update = async (req, res) => {
+      const { id } = req.params;
+      const instance = await this.model.findByPk(id);
+      const params = req.query;
+      Object.keys(params).forEach((key) => {
+        instance[key] = params[key];
+      });
+      await instance.save();
+      res.send(await this.model.findByPk(id));
+    };
+    this.destroy = async (req, res) => {
+      const { id } = req.params;
+      const instance = await this.model.findByPk(id);
+
+      await instance.destroy();
+
+      res.send();
+    };
   }
 }
