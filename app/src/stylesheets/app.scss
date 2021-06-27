@@ -1,0 +1,61 @@
+// FONT FAMILIES
+$standard-fonts: Arial, Helvetica;
+
+// FONT SIZES
+$fs-small: 1rem;
+$fs-medium: 1.5rem;
+
+// BREAKPOINTS
+$small: 480px;
+$medium: 768px;
+$large: 1024px;
+
+@mixin breakpoint($breakpoint) {
+  @media screen and (min-width: $breakpoint ) {
+    @content;
+  }  
+}
+
+@mixin responsive-styles($property, $small-val, $medium-val, $large-val) {
+  #{$property}: $small-val;
+  
+  @include breakpoint($small) {
+    #{$property}: $small-val;
+  };
+
+  @include breakpoint($medium) {
+    #{$property}: $medium-val;
+  };
+
+  @include breakpoint($large) {
+    #{$property}: $large-val;
+  };
+}
+
+@mixin standard-font {
+  font-family: $standard-fonts;
+}
+
+.grid {
+  @include standard-font;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-card {
+  @include responsive-styles('flex', 100% 0 0, 100% 0 0, 33% 0 0);
+  min-width: 200px;
+  border: 0.2rem solid grey;
+  padding: 1rem 2rem;
+  margin: 2rem 1rem;
+
+  &__title {
+    font-size: $fs-medium;
+    margin: 0.5rem 0;
+  }
+
+  &__username {
+    font-size: $fs-small;
+  }
+}
