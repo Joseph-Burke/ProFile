@@ -4,6 +4,9 @@
  */
 import debug from 'debug';
 import http from 'http';
+import dotenv from 'dotenv';
+dotenv.config();
+
 import app from '../app';
 /**
  * Normalize a port into a number, string, or false.
