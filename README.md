@@ -18,6 +18,8 @@ API SETUP
 
 APP SETUP
 
+**Commands in this section should be run from the `app` folder.**
+
 1. Run `yarn` from the `app` directory.
 
 2. Make sure the api is running at `http://localhost:9000` - if it's running on another port, set the value of the serverURL export found in `app/src/settings.js` to the port the server is running on.
