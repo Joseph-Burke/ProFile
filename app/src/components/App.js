@@ -1,6 +1,7 @@
 import fetchData from "../helpers/fetchData";
 import { useState, useEffect } from 'react';
 import ProfileCard from "./profileCard";
+import UserForm from "./userForm";
 import '../stylesheets/app.scss';
 
 function App () {
@@ -20,6 +21,9 @@ function App () {
       <div className="grid" >
         { users.map(user => <ProfileCard user={user} key={user.id} />) }
       </div>
+
+      <UserForm />
+
     </>
   );
 }

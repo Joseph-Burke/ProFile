@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "buildDB": "createdb -h localhost profile",
     "prestart": "babel ./src/ --out-dir build",
     "start": "node ./build/bin/www",
     "startdev": "nodemon --exec babel-node ./src/bin/www",

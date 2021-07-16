@@ -6,7 +6,7 @@ import {
   databaseName,
   databasePassword,
   port,
-} from '../../settings';
+} from '../settings';
 
 export const sequelize = new Sequelize(
   databaseName,

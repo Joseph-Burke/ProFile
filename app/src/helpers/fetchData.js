@@ -1,4 +1,8 @@
-export default async function fetchData (url) {
-  let data = await fetch('http://localhost:9000/users', {mode: 'cors'}).then(response => response.json());
+import { serverURL } from '../settings';
+
+const usersAPI = serverURL + '/users';
+
+export default async function fetchData () {
+  let data = await fetch(usersAPI, {mode: 'cors'}).then(response => response.json());
   return data;
 }
