@@ -2,7 +2,7 @@ API SETUP
 
 1. A couple of pre-requisites will need to be present on your system before starting: 
 
-- **node v10.14.0<=** - I recommend installing nvm (Node Version Manager). From `api/`, run `nvm install 10.14.0 && nvm use 10.14.0`. Then run `node -v` to ensure that version 10.14.0 is present.
+- **node v10.14.0<=** - I recommend installing nvm (Node Version Manager). From `api/`, run `nvm install 10.14.0 && nvm use 10.14.0`. Then run `node -v` to ensure that version 10.14.0 (or later) is present.
 - yarn - a package manager
 - postgres (database) - postgres includes the 'createdb' tool by default, which will be required by the project's database set-up script.
 
